@@ -1,0 +1,68 @@
+public class currencyapx {
+    public Decimal amount {get;set;}
+    public String fromC {get;set;}
+    public String toC {get;set;}
+    public Decimal res {get;set;}
+    
+    public void calc(){
+        Decimal from_rate=0;
+        if(fromC=='JPY')from_rate=0.0072;
+        if(fromC=='USD')from_rate=1;
+        if(fromC=='GBP')from_rate=1.24;
+        if(fromC=='INR')from_rate=0.012;
+        
+        Decimal to_rate=0;
+        if(toC=='JPY')to_rate=138.59;
+        if(toC=='USD')to_rate=1;
+        if(toC=='GBP')to_rate=0.81;
+        if(toC=='INR')to_rate=82.90;
+        
+        res=amount*to_rate*from_rate;
+        res=res.setScale(2, System.roundingMode.HALF_UP);
+}
+}
+<apex:page controller="currencyapx" docType="html-5.0">
+    <apex:sectionHeader title="Currency convertor"/>
+   	<apex:form >
+     	<apex:pageBlock title="Currency Converter">
+        	<apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Enter Amount</apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                <apex:inputText label="Enter Amount" value="{!amount}" required="true"/>
+                </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                      <apex:outputLabel >From</apex:outputLabel>
+                        </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                <apex:selectList label="From" value="{!fromC}">
+                    <apex:selectOption itemValue="" itemLabel="--select--"/>
+                    <apex:selectOption itemValue="USD" itemLabel="USD"/>
+                    <apex:selectOption itemValue="JPY" itemLabel="JPY"/>
+                    <apex:selectOption itemValue="INR" itemLabel="INR"/>
+                    <apex:selectOption itemValue="GBP" itemLabel="GBP"/>
+                </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >To</apex:outputLabel>
+                    </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                <apex:selectList label="To" value="{!toC}">
+                    <apex:selectOption itemValue="" itemLabel="--select--"/>
+                    <apex:selectOption itemValue="USD" itemLabel="USD"/>
+                    <apex:selectOption itemValue="JPY" itemLabel="JPY"/>
+                    <apex:selectOption itemValue="INR" itemLabel="INR"/>
+                    <apex:selectOption itemValue="GBP" itemLabel="GBP"/>
+                </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                <apex:commandButton action="{!calc}" value="calculate" rerender="res" status="sts"/>
+                    </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!res}" id="res"/><apex:actionStatus id="sts" startText="Converting..."></apex:actionStatus>
+                    </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>   
+    </apex:form>
+</apex:page>
