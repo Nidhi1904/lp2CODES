@@ -1,0 +1,42 @@
+public class BMICalculator {
+    public Double weight{get; set;}
+    public Double height{get; set;}
+    public string status2{get; set;}
+    public Double bmi{get; set;}
+    
+    public void BMI(){
+        bmi= weight/(height*height);
+        
+        if(bmi<18.5)
+        {
+            status2='You are underweight, eat healthy food! ';
+        }
+        else if(bmi>=18.5 && bmi<25)
+        {
+            status2='You are normal weight!';
+        }
+    }
+}
+
+<apex:page controller="BMICalculator">
+    <apex:sectionHeader title="BMI Calculator"/>
+    	<apex:form >
+            	<apex:pageBlock >
+                    	<apex:pageBlockSection >
+                            	<apex:inputText label="Enter the weight " value="{!weight}" html-placeholder="Enter the weight"/>
+                            	<apex:inputText label="Enter the height " value="{!height}" html-placeholder="Enter the height"/>
+                            	
+                    	</apex:pageBlockSection>
+                    
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="Calculate BMI and health status" action="{!bmi}"/>
+                    </apex:pageBlockButtons>
+                    
+                    <apex:pageBlockSection >
+                        	<apex:outputText label="Your BMI is" value="{!bmi}" ></apex:outputText>
+                        	<apex:outputText label="Your weight status is" value="{!status2}"></apex:outputText>
+                        	
+                    </apex:pageBlockSection>
+            	</apex:pageBlock>
+    	</apex:form>
+</apex:page>
