@@ -1,0 +1,49 @@
+The object is used for table creation
+
+Go to object,manager:
+
+               Right side create
+
+                              Custom object
+
+                              Create all the labels and all
+
+               Then check o object manager and select book vala table
+
+Go to field and relationship of books
+
+Click on new and create two columns for book, author name and publisher of type text
+
+Then go to student vala table, add student class as a column of type text again
+
+For creating tabs:
+
+Go to setup
+
+Then in the left corner, in search bar, search for tabs
+
+Click on tabs
+
+Click on new custom object tab
+
+Then select the object from the dropdown, student name ka pehle select karo
+
+Create custom objects for all the objects
+
+ 
+
+Then create app:;
+
+Search apps in the left search bar
+
+Go to app mnagaer
+
+Create new lighting app
+
+Usme sare app ke details dalne ke
+
+Last mein also select system administrator(toh hi vo app dikhega)
+
+Then finish and save
+
+Go to the app search bar vo dot vale icon par and search library management system, you will see that app and then all the tabs also add values to those columns for more clarit
