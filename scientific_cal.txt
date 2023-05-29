@@ -1,0 +1,115 @@
+public class CalFinal {
+
+    public integer first {get; set; }
+    public integer second {get; set;}
+    public Decimal result {get; set;}
+    public string status {get; set;}
+    public Double funcv{get;set;}
+    
+    public void Addition(){
+        result= first+second;
+        status='Success, Addition is: ' + result;
+    }
+    public void Subtraction(){
+        result=first-second;
+        status='Success, Subtraction is: ' + result;
+    }
+    public void Multiplication(){
+        result=first*second;
+        status='Success Multiplication is: ' + result;
+    }
+   
+    public void Division(){
+        if(second==0){
+            status='invalid!! Cannot divide by zero';
+            result=0;
+        }
+        else{
+         result=first/second;
+            status='Success division is: ' + result;
+        }
+    }
+    public void sin(){
+        Double val=funcv*(Math.PI/180.0);
+        result=Math.sin(val);
+        status='the value of sin '+funcv+ ' is ' +result;
+
+    }
+    public void cos(){
+         Double val=funcv*(Math.PI/180.0);
+        result=Math.cos(val);
+        status='the value of cos '+funcv+ ' is ' +result;
+    }
+    public void tan(){
+         Double val=funcv*(Math.PI/180.0);
+        result=Math.tan(val);
+        status='the value of tan '+funcv+ ' is ' +result;
+    }
+    public void cot(){
+         Double val=funcv*(Math.PI/180.0);
+        result=1.0/(Math.tan(val));
+        status='the value of cot '+funcv+ ' is ' +result;
+    }
+    public void sqrt(){
+        result=Math.sqrt(funcv);
+        status='the value of sqrt of '+funcv+' is ' +result;
+    }
+    public void cbrt(){
+        result=Math.cbrt(funcv);
+        status='the value of cbrt of '+funcv+' is ' +result;
+    }
+    public void square(){
+        result=funcv*funcv;
+        status='the sqaure of '+funcv+' is ' +result;
+    }
+    public void cube(){
+        result=funcv*funcv*funcv;
+        status='the sqaure of '+funcv+' is ' +result;
+    }
+    public void log(){
+        result=Math.log(funcv);
+        status='the answer is ' +result;
+    }
+    public void log2(){
+        result=Math.log10(funcv);
+        status='the answer is ' +result;
+    }
+    
+}
+
+<apex:page controller="CalFinal">
+    <apex:sectionHeader title="calculator" subtitle="Basic calaculator"/>
+    <apex:form >
+        <apex:pageBlock title="Simple calculator">
+            
+            <apex:pageBlockSection title="calculator" >
+                <apex:inputText label="Enter first Number" html-placeholder="First Number" value="{!first}"/>
+                <apex:inputText label="Enter second Number" html-placeholder="second Number" value="{!second}"/>
+                
+                <apex:inputText label="Enter degreee Number" html-placeholder="second Number" value="{!funcv}"/>                
+                
+                <apex:outputText label="Result" value="{!result}" />
+                <apex:outputText label="Status" value="{!status}" />            
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons location="bottom">
+            <apex:commandButton value="Addition" action="{!Addition}" />
+            <apex:commandButton value="Subtraction" action="{!Subtraction}" />
+            <apex:commandButton value="Multiplication" action="{!Multiplication}" />
+            <apex:commandButton value="Division" action="{!Division}" />
+            <apex:commandButton value="Sin" action="{!sin}" />
+            <apex:commandButton value="Cos" action="{!cos}" />
+            <apex:commandButton value="Tan" action="{!tan}" />
+            <apex:commandButton value="Cot" action="{!cot}" />            
+            <apex:commandButton value="Sqrt" action="{!sqrt}" />
+            <apex:commandButton value="Cbrt" action="{!cbrt}" />
+            <apex:commandButton value="Square" action="{!square}"/>
+            <apex:commandButton value="Cube" action="{!cube}"/>                
+            <apex:commandButton value="Logbase_e" action="{!log}"/>
+            <apex:commandButton value="Logbase_10" action="{!log2}"/>
+
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
